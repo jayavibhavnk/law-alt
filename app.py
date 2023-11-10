@@ -27,7 +27,7 @@ customization_options = {
         "src": st.sidebar.radio("Show Source of Text", ["No", "Yes"])
     }
 
-if st.button("Clear Cache"):
+if st.sidebar.button("Clear Cache"):
     st.cache_data.clear()
     st.write("Cache has been cleared")
 

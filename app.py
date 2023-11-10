@@ -155,7 +155,7 @@ def upload_file(file, filename):
         return response, False
     return response, True
 
-@st.cache(allow_output_mutation=True, suppress_st_warning=True)
+@st.experimental_singleton
 def uploader(uploaded_file):
     
     if uploaded_file and st.session_state.k1 == 0:

@@ -152,7 +152,7 @@ def upload_file(file, filename):
         return response, False
     return response, True
 
-# @st.cache_resource()
+@st.cache_resource()
 def uploader(uploaded_file):
     
     if uploaded_file and st.session_state.k1 == 0:

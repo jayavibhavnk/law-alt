@@ -157,20 +157,22 @@ def uploader(uploaded_file):
     
     if uploaded_file and st.session_state.k1 == 0:
 
+        progress_bar = st.progress(0)
         res = reset_corpus(4)
-
-        st.write(res)
-
+        progress_bar.progress(30)
+        # st.write(res)
+        progress_bar.progress(45)
         binary_file = uploaded_file.read()
 
         filename = uploaded_file.name 
 
         response = upload_file(binary_file, filename)
-
-        st.write(response)
+        progress_bar.progress(75)
+        # st.write(response)
 
         st.session_state.k1 +=1
-
+        progress_bar.progress(100)
+        info = st.info('If your questions do not load please wait a few seconds for the document to get processed in the backend', icon="ℹ️")
         return True
 
 

@@ -28,7 +28,7 @@ customization_options = {
     }
 
 if st.button("Clear Cache"):
-    st.cache_data.clear()
+    st.cache_resource.clear()
     st.write("Cache has been cleared")
 
 country_cid = {"INDIA": 5, "USA": 6, "UK": 7}

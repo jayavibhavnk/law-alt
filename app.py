@@ -27,6 +27,9 @@ customization_options = {
         "src": st.sidebar.radio("Show Source of Text", ["No", "Yes"])
     }
 
+if st.button("Clear Cache"):
+    st.cache_data.clear()
+    st.write("Cache has been cleared")
 
 country_cid = {"INDIA": 5, "USA": 6, "UK": 7}
 all_country_api = "zwt_h_p6lWnM5xwLO7Cd-3T6HPyphP7F78VOtZTPTg"

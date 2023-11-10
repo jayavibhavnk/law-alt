@@ -28,7 +28,7 @@ customization_options = {
     }
 
 if st.button("Clear Cache"):
-    st.cache_resource.clear()
+    st.cache_data.clear()
     st.write("Cache has been cleared")
 
 country_cid = {"INDIA": 5, "USA": 6, "UK": 7}
@@ -155,7 +155,7 @@ def upload_file(file, filename):
         return response, False
     return response, True
 
-@st.cache_resource()
+@st.cache_data()
 def uploader(uploaded_file):
     
     if uploaded_file and st.session_state.k1 == 0:

@@ -1,4 +1,6 @@
 # First
+# openai_api_key = st.secrets.OPENAI_API_KEY
+# vectara_key = st.secrets.VECTARA_KEY
 import openai 
 import streamlit as st
 import requests
@@ -6,8 +8,8 @@ import json
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
-openai_api_key = st.secrets.OPENAI_API_KEY
-vectara_key = st.secrets.VECTARA_KEY
+# openai_api_key = st.secrets.OPENAI_API_KEY
+# vectara_key = st.secrets.VECTARA_KEY
 st.title("LAW-IO-BUDDY ⚖️ ")
 
 st.session_state.k1 = 0
@@ -28,8 +30,9 @@ customization_options = {
     }
 
 if st.button("Clear Cache"):
-    st.legacy_caching.caching.clear_cache()
+    st.cache_resource.clear()
     st.write("Cache has been cleared")
+
 
 country_cid = {"INDIA": 5, "USA": 6, "UK": 7}
 all_country_api = "zwt_h_p6lWnM5xwLO7Cd-3T6HPyphP7F78VOtZTPTg"
@@ -155,7 +158,7 @@ def upload_file(file, filename):
         return response, False
     return response, True
 
-@st.experimental_singleton
+@st.cache_resource()
 def uploader(uploaded_file):
     
     if uploaded_file and st.session_state.k1 == 0:
@@ -163,7 +166,7 @@ def uploader(uploaded_file):
         progress_bar = st.progress(0)
         res = reset_corpus(4)
         progress_bar.progress(30)
-        # st.write(res)
+        st.write(res)
         progress_bar.progress(45)
         binary_file = uploaded_file.read()
 
@@ -171,7 +174,7 @@ def uploader(uploaded_file):
 
         response = upload_file(binary_file, filename)
         progress_bar.progress(75)
-        # st.write(response)
+        st.write(response)
 
         st.session_state.k1 +=1
         progress_bar.progress(100)
